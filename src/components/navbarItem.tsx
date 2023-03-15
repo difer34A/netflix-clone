@@ -4,10 +4,10 @@ interface NavbarItemsProps{
     label:string;
 }
 
-const NavbarItem = () => {
+const NavbarItem: React.FC<NavbarItemsProps> = ({label}) => {
   return (
     <div className='text-white cursor-pointer hover:text-gray-300 transition'>
-        ARE U GAY TOK??
+        {label}
     </div>
   )
 }
