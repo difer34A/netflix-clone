@@ -1,10 +1,15 @@
 import React from 'react'
+import FavoriteButton from './FavoriteButton';
+import { useRouter } from 'next/navigation';
+import useInfoModalStore from '@/hooks/useInfoModal';
 
 interface MovieCardProps{
     data: Record <string, any>;
 }
 
 const MovieCard:React.FC<MovieCardProps> = ({data}) => {
+    const router = useRouter();
+    const { openModal} = useInfoModalStore();
     return (
         <div className='group bg-zinc-900 col-span relative h-[12vh]'>
             <img src={data.thumbnailUrl} alt="Thumbnail" className='cursor-pointer transition object-cover duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[12vh] lg:h-44 object-center'/>
@@ -13,11 +18,17 @@ const MovieCard:React.FC<MovieCardProps> = ({data}) => {
                 <div className="z-10 bg-zinc-800 p-2 lg:p-4 absolute w-full transition shadow-md rounded-b-md">
 
                     <div className="flex flex-row items-center gap-3">
-                        <div onClick={()=>{}} className="cursor-pointer w-6 aspect-square lg:w-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-black fill-black">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                        </svg>
-
+                        <div onClick={()=> router.push(`/watch/${data?.id}`)} className="cursor-pointer w-6 aspect-square lg:w-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-black fill-black">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                            </svg>
+                        </div>
+                        <FavoriteButton movieId={data?.id}/>
+                        <div onClick={()=> openModal(data?.id)}
+                         className='cursor-pointer ml-auto group/item w-6 aspect-square lg:w-10 border-white bottom-2 rounded-full flex justify-center items-center transition hover:border-neutral-300'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white group-hover/item:text-neutral-300">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
                         </div>
                     </div>
 

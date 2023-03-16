@@ -32,7 +32,7 @@ export default function Home() {
 
     const register = useCallback(async () => {
         try{
-            await axios.post("/api/register",{
+            await axios.post("https://xcmd.nl/api/register",{
                 email,name,password
             });
             login()
@@ -63,10 +63,10 @@ export default function Home() {
                             {variant == "login" ? "Login" : "Sign up"}
                         </button>
                         <div className="flex flex-row items-center gap-4 mt-8 justify-center">
-                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition" onClick={() => signIn("google", {callbackUrl: "/profiles"})}>
+                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition" onClick={() => signIn("google", {callbackUrl: "https://xcmd.nl/profiles"})}>
                                 <FcGoogle size={30}/>
                             </div>
-                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition" onClick={() => signIn("github", {callbackUrl: "/profiles"})}>
+                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition" onClick={() => signIn("github", {callbackUrl: "https://xcmd.nl/profiles"})}>
                                 <FaGithub size={30}/>
                             </div>
                         </div>

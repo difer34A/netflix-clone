@@ -9,7 +9,7 @@ export async function getServerSideProps(context: NextPageContext){
     if(!session){
         return{
             redirect:{
-                destination: "/auth",
+                destination: "https://xcmd.nl/auth",
                 permanent: false,
             }
         }
@@ -30,7 +30,7 @@ export default function Home() {
                     <h1 className='text-3xl md:text-6xl text-white text-center'>Who is watching?</h1>
                     <div className='flex items-center justify-center gap-8 mt-10'>
 
-                        <div onClick={() => router.push("/")}>
+                        <div onClick={() => router.push("https://xcmd.nl/")}>
                             <div className="group flex-row w-44 mx-auto">
                                 <div className="w-44 h-44 rounded-md flex items-center justify-center border-2 border-transparent group-hover: cursor-pointer group-hover:border-white">
                                     <img src="/images/default-blue.png" alt="" className='rounded-md' />

@@ -50,7 +50,7 @@ export const authOptions: NextAuthOptions = {
         })
     ],
     pages: {
-        signIn : "/auth",
+        signIn : "https://xcmd.nl/auth",
     },
     debug : process.env.NODE_ENV === "development",
     adapter : PrismaAdapter(prismadb),
